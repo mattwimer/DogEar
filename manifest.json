@@ -1,0 +1,20 @@
+{
+    "name":"DogEar",
+    "description":"Select and save text under tags for simple retrieval later!",
+    "version":"0.1.0",
+    "manifest_version":3,
+    "background":{
+        "service_worker":"background.js"
+    },
+    "permissions":["tabs", "storage", "scripting", "contextMenus"],
+    "action":{
+        "default_popup":"popup.html",
+        "default_icon": {
+            "16":"/images/dogear16.jpg",
+            "32":"/images/dogear32.jpg", 
+            "48":"/images/dogear48.jpg",
+            "64":"/images/dogear64.jpg",
+            "128":"/images/dogear128.jpg"
+        }
+    }
+}

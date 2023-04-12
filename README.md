@@ -1,0 +1,1 @@
+This is a Google Chrome extension for saving and organizing text found on websites.
