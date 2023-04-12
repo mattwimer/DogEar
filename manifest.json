@@ -6,6 +6,7 @@
     "background":{
         "service_worker":"background.js"
     },
+    "host_permissions": ["<all_urls>"],
     "permissions":["tabs", "storage", "scripting", "contextMenus"],
     "action":{
         "default_popup":"popup.html",
@@ -16,5 +17,14 @@
             "64":"/images/dogear64.jpg",
             "128":"/images/dogear128.jpg"
         }
-    }
+    },
+    "web_accessible_resources": [{
+        "resources":["index.html"],
+        "matches":["<all_urls>"]
+    }],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["savemenu.js"]
+        } ]
 }

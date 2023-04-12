@@ -6,6 +6,21 @@ chrome.runtime.onInstalled.addListener(function() {
     });
 });
 
+async function injectMenu(selectedText) {
+    const [tab] = await chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    });
+    // chrome.scripting.executeScript({
+    //     target: {tabId: tab.id},
+    //     code: 'var selectedText = ' + selectedText + ";"
+    // });
+    chrome.scripting.executeScript({
+        target: {tabId: tab.id},
+        files:["savemenu.js"],
+    });
+}
+
 chrome.contextMenus.onClicked.addListener((info) => {
     if (info.menuItemId == 'dogearContextMenu') {
         // Get the selected text
@@ -13,6 +28,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
 
         // Do something with the selected text
         console.log('Saved passage: ', selectedText);
+        injectMenu(selectedText);
         
     }
 });
