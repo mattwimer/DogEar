@@ -1,10 +1,12 @@
-chrome.contextMenus.create({
-    id: 'dogearContextMenu',
-    title: 'Save Selected text as DogEar',
-    contexts: ['selection'] // Only show the context menu when text is selected
+chrome.runtime.onInstalled.addListener(function() {
+    chrome.contextMenus.create({
+        id: 'dogearContextMenu',
+        title: 'Save Selected text as DogEar',
+        contexts: ['selection'] // Only show the context menu when text is selected
+    });
 });
 
-chrome.contextMenus.onClicked.addListener(function(info) {
+chrome.contextMenus.onClicked.addListener((info) => {
     if (info.menuItemId == 'dogearContextMenu') {
         // Get the selected text
         var selectedText = info.selectionText;
