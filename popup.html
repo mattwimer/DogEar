@@ -1,19 +1,86 @@
 <!DOCTYPE html>
-
 <html>
+  <head>
+    <title>My Extension</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .frame {
+        width: 300px;
+        height: 250px;
+        background-color: #708F93;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        right: 0;
+	box-shadow: inset 0px 0px 0px 1px #000000;
 
-<head>
 
-<link rel="stylesheet" href="button.css">
-
-</head>
-
-<body>
-
-<button id="changeColor"></button>
-
-<script src="popup.js"></script>
-
-</body>
-
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 10px;
+      }
+      img {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 30px;
+      }
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+      input[type="text"] {
+        width: 80%;
+        padding: 5px;
+        margin-right: 5px;
+        border: none;
+        border-radius: 3px;
+      }
+      button[type="submit"] {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #A0A0A0;
+        color: #000;
+        cursor: pointer;
+      }
+      button#settings {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #A0A0A0;
+        color: #000;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="container">
+        <img src="images/dogear128alt.png" alt="DogEarMascot">
+        <form>
+          <input type="text" placeholder="Search...">
+          <button type="submit">Find</button>
+        </form>
+      </div>
+      <button id="settings">Settings</button>
+    </div>
+    <script src="popup.js"></script>
+  </body>
 </html>
+
