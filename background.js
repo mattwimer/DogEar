@@ -6,7 +6,13 @@ chrome.runtime.onInstalled.addListener(function() {
     });
 });
 
-async function injectMenu(selectedText) {
+function addMenu() {
+    var iFrame = document.createElement('iframe');
+    iFrame.src = chrome.runtime.getURL("index.html");
+    document.body.insertBefore(iFrame, document.body.firstChild);
+}
+
+async function injectMenu() {
     const [tab] = await chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -15,9 +21,10 @@ async function injectMenu(selectedText) {
     //     target: {tabId: tab.id},
     //     code: 'var selectedText = ' + selectedText + ";"
     // });
+
     chrome.scripting.executeScript({
         target: {tabId: tab.id},
-        files:["savemenu.js"],
+        func: addMenu
     });
 }
 
@@ -28,7 +35,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
 
         // Do something with the selected text
         console.log('Saved passage: ', selectedText);
-        injectMenu(selectedText);
-        
+        chrome.storage.local.set({passage: selectedText});
+        injectMenu();
     }
 });
